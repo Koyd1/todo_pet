@@ -1,0 +1,70 @@
+.inputTask {
+  display: grid;
+  grid-template-columns: 1fr 50px 50px; /* Изменили ширину столбцов */
+  margin-bottom: 15px;
+  background: #dbe2ef;
+  border-radius: 5px;
+
+  &Label {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: grab;
+  }
+
+  &Checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  &Title {
+    padding: 10px;
+    line-height: 1.2;
+  }
+
+  &TitleEdit {
+    font: 1rem/1em 'Roboto', 'sans-serif';
+    border: none;
+    padding-top: 3px;
+    background: none;
+    padding-left: 5px;
+    //box-shadow: 0 4px 0 -3px #3f72af;
+
+    &:active {
+      outline-color: #3F72AF;
+    }
+
+    &:focus, &:active {
+      outline-color: #3F72AF;
+    }
+  }
+
+
+  &Edit, &Remove, &Save {
+    display: block;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &Edit {
+    background: url("./img/edit.svg") no-repeat center center;
+  }
+
+  &Remove {
+    background: url("./img/trash.svg") no-repeat center center;
+  }
+
+  &Save {
+    background: url("./img/check.svg") no-repeat center center;
+  }
+}

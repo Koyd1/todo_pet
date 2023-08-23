@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.inputPlus {
+  border: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  margin-bottom: 15px;
+
+  .inputPlusValue {
+    border: 1px solid #B1B1B1;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 9px 10px;
+    font: 16px/1.4 'Roboto', sans-serif;
+    background: #dbe2ef;
+
+    input {
+
+    }
+
+    &::placeholder {
+      color: #7b7b7b;
+
+    }
+
+    &:focus, &:active {
+      margin-right: -3px;
+      outline-color: #3F72AF;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+
+  .inputBtn {
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background: #3F72AF url("./img/plus.svg") no-repeat center center;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

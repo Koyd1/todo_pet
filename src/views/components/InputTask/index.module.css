@@ -1,0 +1,71 @@
+@charset "UTF-8";
+.inputTask {
+    display: grid;
+    grid-template-columns: 1fr 50px 50px; /* Изменили ширину столбцов */
+    margin-bottom: 15px;
+    background: #dbe2ef;
+    border-radius: 5px;
+}
+
+.inputTaskLabel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: grab;
+}
+
+.inputTaskCheckbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.inputTaskTitle {
+    padding: 10px;
+    line-height: 1.2;
+}
+
+.inputTaskTitleEdit {
+    font: 1rem/1em "Roboto", "sans-serif";
+    border: none;
+    padding-top: 3px;
+    background: none;
+    padding-left: 5px;
+}
+
+.inputTaskTitleEdit:active {
+    outline-color: #3F72AF;
+}
+
+.inputTaskTitleEdit:focus, .inputTaskTitleEdit:active {
+    outline-color: #3F72AF;
+}
+
+.inputTaskEdit, .inputTaskRemove, .inputTaskSave {
+    display: block;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.3s;
+}
+
+.inputTaskEdit:hover, .inputTaskRemove:hover, .inputTaskSave:hover {
+    opacity: 0.7;
+}
+
+.inputTaskEdit {
+    background: url("./img/edit.svg") no-repeat center center;
+}
+
+.inputTaskRemove {
+    background: url("./img/trash.svg") no-repeat center center;
+}
+
+.inputTaskSave {
+    background: url("./img/check.svg") no-repeat center center;
+}
+
+/*# sourceMappingURL=index.module.css.map */
