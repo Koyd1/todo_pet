@@ -1,17 +1,17 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from './index.module.scss';
 
-interface inputTaskProps {
+interface InputTaskProps {
     id: string;
     title: string;
-    onDone: (id: string) => void;
+    isChecked: boolean;
+    onDone: (id: string, title: string) => void;
     onEdited: (id: string, value: string) => void;
     onRemoved: (id: string) => void;
 }
 
-export const InputTask: React.FC<inputTaskProps> = ({id, title, onDone, onEdited, onRemoved}) => {
+export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDone, onEdited, onRemoved }) => {
 
-    const [checked, setChecked] = useState(false);
     const [isEditMode, setIsEditMode] = useState(false);
     const [value, setValue] = useState(title);
     const editTitleInputRef = useRef<HTMLInputElement>(null);
@@ -22,42 +22,43 @@ export const InputTask: React.FC<inputTaskProps> = ({id, title, onDone, onEdited
         }
     }, [isEditMode]);
 
+    const handleEditModeSave = () => {
+        onEdited(id, value);
+        setIsEditMode(false);
+    };
 
     return (
         <div className={styles.inputTask}>
             <label className={styles.inputTaskLabel}>
-                <input type="checkbox"
-                       checked={checked}
-                       disabled={isEditMode}
-                       className={styles.inputTaskCheckbox}
-                       onChange={(event) => {
-                           setChecked(event.target.checked);
-                           if (event.target.checked) {
-                               setTimeout(() => {
-                                   onDone(id);
-                               }, 300)
-
-                           }
-                       }}/>
+                <input
+                    type="checkbox"
+                    checked={isChecked}
+                    disabled={isEditMode}
+                    className={styles.inputTaskCheckbox}
+                    onChange={() => {
+                        onDone(id, value);
+                    }}
+                />
                 {
                     isEditMode ? (
-                        <input type="text"
-                               className={styles.inputTaskTitleEdit}
-                               value={value}
-                               ref={editTitleInputRef}
-                               onChange={(evt) => {
-                                   setValue(evt.target.value);
-                               }}
-                               onKeyDown={(evt) => {
-                                   if (evt.key === 'Enter') {
-                                       onEdited(id, value)
-                                       setIsEditMode(false)
-                                   }
-                               }}
+                        <input
+                            type="text"
+                            className={styles.inputTaskTitleEdit}
+                            value={value}
+                            ref={editTitleInputRef}
+                            onChange={(evt) => {
+                                setValue(evt.target.value);
+                            }}
+                            onKeyDown={(evt) => {
+                                if (evt.key === 'Enter') {
+                                    handleEditModeSave();
+                                }
+                            }}
                         />
-                    ) : <h3 className={title}> {title}</h3>
+                    ) : (
+                        <h3 className={isChecked ? styles.checkedTitle : ''}>{title}</h3>
+                    )
                 }
-
             </label>
             {isEditMode ? (
                 <button
@@ -85,7 +86,6 @@ export const InputTask: React.FC<inputTaskProps> = ({id, title, onDone, onEdited
                     }
                 }}
             />
-        </div>
+            </div>
     );
 };
-

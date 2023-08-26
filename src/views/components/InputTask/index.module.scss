@@ -68,3 +68,16 @@
     background: url("./img/check.svg") no-repeat center center;
   }
 }
+
+.inputTaskLabel {
+  display: flex;
+  align-items: center;
+}
+
+.checkedTitle {
+  text-decoration: line-through;
+  user-select: none;
+  color: #595b5f;
+  /* Дополнительные стили для зачёркнутого текста */
+}
+
