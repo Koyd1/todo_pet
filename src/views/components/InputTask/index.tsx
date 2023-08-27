@@ -9,17 +9,12 @@ interface InputTaskProps {
     onEdited: (id: string, value: string) => void;
     onRemoved: (id: string) => void;
 }
-
 export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDone, onEdited, onRemoved }) => {
-
-    const [isEditMode, setIsEditMode] = useState(false);
-    const [value, setValue] = useState(title);
+    const [isEditMode, setIsEditMode] = useState<boolean>(false);
+    const [value, setValue] = useState<string>(title);
     const editTitleInputRef = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if (isEditMode) {
-            editTitleInputRef?.current?.focus();
-        }
+    useEffect(() => {isEditMode && editTitleInputRef?.current?.focus()
     }, [isEditMode]);
 
     const handleEditModeSave = () => {
@@ -35,9 +30,8 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDo
                     checked={isChecked}
                     disabled={isEditMode}
                     className={styles.inputTaskCheckbox}
-                    onChange={() => {
-                        onDone(id, value);
-                    }}
+                    onChange={() => onDone(id, value)
+                    }
                 />
                 {
                     isEditMode ? (
@@ -46,13 +40,8 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDo
                             className={styles.inputTaskTitleEdit}
                             value={value}
                             ref={editTitleInputRef}
-                            onChange={(evt) => {
-                                setValue(evt.target.value);
-                            }}
-                            onKeyDown={(evt) => {
-                                if (evt.key === 'Enter') {
-                                    handleEditModeSave();
-                                }
+                            onChange={(evt) => setValue(evt.target.value)}
+                            onKeyDown={(evt) => {evt.key === 'Enter' && handleEditModeSave()
                             }}
                         />
                     ) : (
@@ -72,18 +61,15 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDo
                 <button
                     aria-label='Edid'
                     className={styles.inputTaskEdit}
-                    onClick={() => {
-                        setIsEditMode(true)
-                    }}
+                    onClick={() => setIsEditMode(true)
+                    }
                 />
             )}
             <button
                 aria-label='Remove'
                 className={styles.inputTaskRemove}
                 onClick={() => {
-                    if (confirm('Are you sure?')) {
-                        onRemoved(id);
-                    }
+                    confirm('Are you sure?') && onRemoved(id);
                 }}
             />
             </div>

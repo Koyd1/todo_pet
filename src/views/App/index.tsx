@@ -6,19 +6,13 @@ import { InputTask } from '../components/InputTask';
 import styles from './index.module.scss';
 
 export const App: React.FC = () => {
-    const [
+    const {
         tasks,
         createTask,
         updateTask,
         removeTask,
         updateTaskOnDone,
-    ] = useToDoStore(state => [
-        state.tasks,
-        state.createTask,
-        state.updateTask,
-        state.removeTask,
-        state.updateTaskOnDone,
-    ]);
+        } = useToDoStore(state => state);
 
     const unfinishedTasks = tasks.filter(task => !task.isChecked);
     const finishedTasks = tasks.filter(task => task.isChecked);
