@@ -22,16 +22,16 @@ export const App: React.FC = () => {
 
     const visibleTasks = showCompleted ? finishedTasks : tasks;
 
-    //Сортировка: если нужна
-    // visibleTasks.sort((a, b) => {
-    //     if (a.isChecked && !b.isChecked) {
-    //         return 1;
-    //     } else if (!a.isChecked && b.isChecked) {
-    //         return -1;
-    //     } else {
-    //         return 0;
-    //     }
-    // });
+    //Сортировка: если нужна.
+    visibleTasks.sort((a, b) => {
+        if (a.isChecked && !b.isChecked) {
+            return 1;
+        } else if (!a.isChecked && b.isChecked) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
     return (
         <div>
             <article className={styles.article}>
