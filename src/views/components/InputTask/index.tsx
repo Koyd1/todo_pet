@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from './index.module.scss';
 
 interface InputTaskProps {
@@ -24,7 +24,7 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDo
 
     return (
         <div className={styles.inputTask}>
-            <label className={styles.inputTaskLabel}>
+            <div className={styles.inputTaskLabel}>
                 <input
                     type="checkbox"
                     checked={isChecked}
@@ -41,14 +41,15 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, title, isChecked, onDo
                             value={value}
                             ref={editTitleInputRef}
                             onChange={(evt) => setValue(evt.target.value)}
-                            onKeyDown={(evt) => {evt.key === 'Enter' && handleEditModeSave()
+                            onKeyDown={(evt) => {
+                                evt.key === 'Enter' && handleEditModeSave()
                             }}
                         />
                     ) : (
                         <h3 className={isChecked ? styles.checkedTitle : ''}>{title}</h3>
                     )
                 }
-            </label>
+            </div>
             {isEditMode ? (
                 <button
                     aria-label='Save'

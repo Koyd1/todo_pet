@@ -6,7 +6,7 @@ interface InputPlusProps {
 }
 
 export const InputPlus: React.FC<InputPlusProps> = ({onAdd}) => {
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState<string>('');
 
     const addTask = useCallback(() => {
         onAdd(inputValue);
