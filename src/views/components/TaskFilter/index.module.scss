@@ -1,9 +1,11 @@
 .taskCounter {
-  padding-left: 10px;
   display: flex;
   margin-bottom: 20px;
+  justify-content: center;
 
-  &Section {
+  .taskCounterSectionAll {
+    justify-content: center;
+    width: 40%;
     display: flex;
     align-items: center;
     margin-right: 20px;
@@ -11,18 +13,35 @@
     border: 1px solid #bdcdee;
     border-radius: 5px;
     background-color: #dbe2ef;
-
-    &Checkbox {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-    }
-
-    &Value {
-
-    }
+    height: auto;
+    white-space: pre-line;
   }
+
+  .taskCounterSectionCompleted {
+    justify-content: center;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+
+    padding: 10px;
+    border: 1px solid #bdcdee;
+    border-radius: 5px;
+    background-color: #dbe2ef;
+    height: 40px;
+  }
+
+  .taskCounterSectionCheckbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    padding: 5px;
+  }
+
 }
+
+
+

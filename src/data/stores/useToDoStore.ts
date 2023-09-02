@@ -6,7 +6,7 @@ interface Task {
     id: string;
     title: string;
     createdAt: number;
-    isChecked: boolean; // Добавляем свойство isChecked
+    isChecked: boolean;
 }
 
 interface ToDoStore {
@@ -27,7 +27,7 @@ export const useToDoStore = create<ToDoStore>()(persist((set, get) => ({
             isChecked: false,
         };
         set({
-            tasks: [newTask, ...tasks], // Исправлен порядок добавления новой задачи
+            tasks: [newTask, ...tasks],
         });
     },
 
